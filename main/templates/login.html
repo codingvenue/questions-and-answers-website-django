@@ -1,0 +1,29 @@
+{% extends 'layouts/page.html' %}
+
+{% block content %}
+<div class="page login-page">
+<h1 class="title">Login</h1>
+
+
+<form method="POST" action="" class="login-form">
+  {% csrf_token %}
+<div class="fieldWrapper">
+  <label for="{{form.username.id_for_label}}">Username:</label>
+  {{form.username}}
+  <span class="error">{{form.username.errors}}</span>
+</div>
+<div class="fieldWrapper">
+  <label for="{{form.password.id_for_label}}">Password:</label>
+  {{form.password}}
+  <span class="error">{{form.password.errors}}</span>
+</div>
+{% if form.non_field_errors %}
+<div class="non_form_errors">
+  <span class="error">{{form.non_field_errors.as_ul}}</span>
+</div>
+{% endif %}
+<input type="submit" value="Login" class="submit-button"/>
+</form>
+
+</div>
+{% endblock %}
